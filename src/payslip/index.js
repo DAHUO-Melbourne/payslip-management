@@ -13,14 +13,14 @@ class Payslip extends Component {
             <h1>Payslip</h1>
             <h2>{FirstName} {LastName}</h2>
             <ListGroup variant="flush">
-              <ListGroup.Item variant='secondary'>{myDate.getDate()} {mon[myDate.getMonth()]} {myDate.getFullYear()}</ListGroup.Item>
-              <ListGroup.Item>Monthly</ListGroup.Item>
-              <ListGroup.Item variant='secondary'>Annual Income     ${(AnnualIncome).toLocaleString()}.00</ListGroup.Item>
-              <ListGroup.Item>Gross Income     ${(GrossIncome).toLocaleString()}.00</ListGroup.Item>
-              <ListGroup.Item variant='secondary'>Income Tax    ${(IncomeTax).toLocaleString()}.00</ListGroup.Item>
-              <ListGroup.Item>Net Income    ${(NetIncome).toLocaleString()}.00</ListGroup.Item>
-              <ListGroup.Item variant='secondary'>Super    ${(SuperPay).toLocaleString()}.00</ListGroup.Item>
-              <ListGroup.Item>Pay    ${(Pay).toLocaleString()}.00</ListGroup.Item>
+              <ListGroup.Item variant='secondary'><b>Pay Date</b> <span style={{position:'absolute', left:'50%'}}>{myDate.getDate()} {mon[myDate.getMonth()]} {myDate.getFullYear()}</span></ListGroup.Item>
+              <ListGroup.Item><b>Pay Frenquently</b> <span style={{position:'absolute', left:'50%'}}>Monthly</span></ListGroup.Item>
+              <ListGroup.Item variant='secondary' ><b>Annual Income</b>     <span style={{position:'absolute', left:'50%'}}>${(AnnualIncome).toLocaleString()}.00</span></ListGroup.Item>
+              <ListGroup.Item><b>Gross Income</b>     <span style={{position:'absolute', left:'50%'}}>${(GrossIncome).toLocaleString()}.00</span></ListGroup.Item>
+              <ListGroup.Item variant='secondary'><b>Income Tax</b>    <span style={{position:'absolute', left:'50%'}}>${(IncomeTax).toLocaleString()}.00</span></ListGroup.Item>
+              <ListGroup.Item><b>Net Income</b>    <span style={{position:'absolute', left:'50%'}}>${(NetIncome).toLocaleString()}.00</span></ListGroup.Item>
+              <ListGroup.Item variant='secondary'><b>Super</b>    <span style={{position:'absolute', left:'50%'}}>${(SuperPay).toLocaleString()}.00</span></ListGroup.Item>
+              <ListGroup.Item><b>Pay</b>    <span style={{position:'absolute', left:'50%'}}>${(Pay).toLocaleString()}.00</span></ListGroup.Item>
             </ListGroup>
             <Button 
                 variant="primary" 
