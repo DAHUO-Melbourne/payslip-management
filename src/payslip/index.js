@@ -2,6 +2,8 @@ import React,{ Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ListGroup, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import assert from 'assert';
+import mongodb from 'mongodb'
 
 class Payslip extends Component {
     render(){
@@ -25,6 +27,7 @@ class Payslip extends Component {
             <Button 
                 variant="primary" 
                 style={{position:'absolute', right:'0', marginTop:'20px'}}
+                onClick={handlePayClick.bind(this, FirstName, LastName, mon[myDate.getMonth()], AnnualIncome, GrossIncome, IncomeTax, NetIncome, SuperPay, Pay)}
                 >Pay</Button>
          </div>
         )
@@ -42,6 +45,27 @@ const mapState=(state)=>({
     Pay:state.getIn(['payslip', 'Pay']),
 })
 
+function handlePayClick(FirstName, LastName, Month, AnnualIncome, GrossIncome, IncomeTax, NetIncome, SuperPay, Pay){
+  const payslipInfo={
+    FirstName:FirstName,
+    LastName:LastName,
+    Month: Month,
+    AnnualIncome:AnnualIncome,
+    GrossIncome:GrossIncome,
+    IncomeTax:IncomeTax,
+    NetIncome:NetIncome,
+    SuperPay:SuperPay,
+    Pay:Pay
+  }
+//  console.log(payslipInfo);
+}
 
 
-export default connect(mapState, null)(Payslip);
+const mapDispatch=(dispatch)=>{
+  return{
+    
+  }
+}
+
+
+export default connect(mapState, mapDispatch)(Payslip);
