@@ -33,11 +33,12 @@ router.route('/add').post((req,res)=>{
     })
 
     newPayslip.save()
-    .then(()=>res.json('Exercise added!'))
+    .then(()=>res.json('Payslip added!'))
     .catch(err=>res.status(400).json('Error '+err));
 });
 
-router.route('/find').get((req, res)=>{
+router.route('/find').post((req, res)=>{
+//    console.log(req.body.firstName);
     payslip.find({
         firstName:req.body.firstName,
         lastName:req.body.lastName,

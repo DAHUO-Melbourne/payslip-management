@@ -2,10 +2,10 @@ import React,{ Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ListGroup, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import assert from 'assert';
-import mongodb from 'mongodb'
+import axios from 'axios';
 
 class Payslip extends Component {
+
     render(){
       const {FirstName, LastName, AnnualIncome, GrossIncome, IncomeTax, NetIncome, SuperPay, Pay}=this.props;
       const myDate = new Date();
@@ -47,18 +47,32 @@ const mapState=(state)=>({
 
 function handlePayClick(FirstName, LastName, Month, AnnualIncome, GrossIncome, IncomeTax, NetIncome, SuperPay, Pay){
   const payslipInfo={
-    FirstName:FirstName,
-    LastName:LastName,
-    Month: Month,
-    AnnualIncome:AnnualIncome,
-    GrossIncome:GrossIncome,
-    IncomeTax:IncomeTax,
-    NetIncome:NetIncome,
-    SuperPay:SuperPay,
-    Pay:Pay
+    firstName:FirstName,
+    lastName:LastName,
+    paymentMonth: Month,
+    annualIncome:AnnualIncome,
+    grossIncome:GrossIncome,
+    incomeTax:IncomeTax,
+    netIncome:NetIncome,
+    superPay:SuperPay,
+    pay:Pay
   }
-//  console.log(payslipInfo);
+  axios.post('http://localhost:5000/payslip/find',{
+    firstName:FirstName,
+    lastName:LastName,
+    paymentMonth:Month
+  }).then(res=>{
+    console.log(res.data);
+    if(res.data.length===0){
+      axios.post('http://localhost:5000/payslip/add', payslipInfo)
+      .then(res=>console.log(res.data));
+    }
+    else
+      alert("You have already paid");
+  });
+
 }
+
 
 
 const mapDispatch=(dispatch)=>{
