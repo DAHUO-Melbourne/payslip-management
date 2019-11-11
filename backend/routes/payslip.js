@@ -37,4 +37,14 @@ router.route('/add').post((req,res)=>{
     .catch(err=>res.status(400).json('Error '+err));
 });
 
+router.route('/find').get((req, res)=>{
+    payslip.find({
+        firstName:req.body.firstName,
+        lastName:req.body.lastName,
+        paymentMonth:req.body.paymentMonth
+    })
+    .then(payslips=>res.json(payslips))
+    .catch(err=>res.status(400).json('Error '+err));
+});
+
 module.exports=router;
