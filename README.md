@@ -16,5 +16,7 @@ You will also see any lint errors in the console.
 ### Page appearence
 
 #### successful submit
+![image](https://github.com/DAHUO-Melbourne/payslip-management/blob/master/GIF/GIFSucc.gif)
 
 #### failed submit
+![image](https://github.com/DAHUO-Melbourne/payslip-management/blob/master/GIF/GIFFL.gif)
