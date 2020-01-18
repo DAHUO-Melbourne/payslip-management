@@ -94,8 +94,6 @@ const taxRate = [
     }
 ]
 
-
-
 const mapState=(state)=>({
     FirstName:state.getIn(['userInfo','FirstName']),
     LastName:state.getIn(['userInfo','LastName']),
