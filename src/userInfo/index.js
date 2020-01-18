@@ -61,6 +61,41 @@ class UserInfo extends Component {
     }
 }
 
+const taxRate = [
+    {
+        min: 0,
+        max: 18200,
+        rate: 0,
+        baseAmount: 0
+    },
+    {
+        min: 18200,
+        max: 37000,
+        rate: 0.19,
+        baseAmount: 0
+    },
+    {
+        min: 37000,
+        max: 90000,
+        rate: 0.325,
+        baseAmount: 3572
+    },
+    {
+        min: 90000,
+        max: 180000,
+        rate: 0.37,
+        baseAmount: 20797
+    },
+    {
+        min: 180000,
+        max: Infinity,
+        rate: 0.45,
+        baseAmount: 54097
+    }
+]
+
+
+
 const mapState=(state)=>({
     FirstName:state.getIn(['userInfo','FirstName']),
     LastName:state.getIn(['userInfo','LastName']),
@@ -103,17 +138,11 @@ const mapDispatch=(dispatch)=>{
             const GrossIncome=Math.floor(AnnualIncome/12);
             let IncomeTax=0;
 
-            if(0<=AnnualIncome&&AnnualIncome<=18200){
-                IncomeTax=0;
-            }
-            else if(18201<=AnnualIncome&&AnnualIncome<=37000){
-                IncomeTax=(AnnualIncome-18200)*0.19;
-            }else if(37001<=AnnualIncome&&AnnualIncome<=80000){
-                IncomeTax=(AnnualIncome-37000)*0.325+3572;
-            }else if(80001<=AnnualIncome&&AnnualIncome<=180000){
-                IncomeTax=(AnnualIncome-80000)*0.37+17547;
-            }else
-                IncomeTax=(AnnualIncome-180000)*0.45+54547;
+            let taxList = taxRate.map( item => {
+                if(AnnualSalary > item.min && AnnualSalary <= item.max) {
+                    IncomeTax = (AnnualIncome - item.min) * item.rate + item.baseAmount;
+                }
+            })
 
             const MonthIncomeTax=Math.ceil(IncomeTax/12);
             const NetIncome=GrossIncome-MonthIncomeTax;
