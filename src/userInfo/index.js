@@ -6,9 +6,7 @@ import {Link} from 'react-router-dom'
 
 class UserInfo extends Component {
     render(){
-
-        const {FirstName, LastName, AnnualSalary, SuperRate}=this.props;
-
+      const {FirstName, LastName, AnnualSalary, SuperRate}=this.props;
       return (
         <div className="App" style={{width:'50%', margin: 'auto', position:'relative'}}>
             <div style={{textAlign: 'center', paddingTop:'20px'}}>Employee Info</div>
