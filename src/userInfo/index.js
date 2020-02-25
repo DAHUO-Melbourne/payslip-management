@@ -103,31 +103,15 @@ const mapState=(state)=>({
 const mapDispatch=(dispatch)=>{
     return {
         handleFirstNameChange(e){
-            const action={
-                type: 'HANDLE_FIRST_NAME_CHANGE',
-                value:e.target.value,
-            }
             dispatch(actionCreators.handleFirstNameChange(e));
         },
         handleLastNameChange(e){
-            const action={
-                type: 'HANDLE_LAST_NAME_CHANGE',
-                value:e.target.value,
-            }
             dispatch(actionCreators.handleLastNameChange(e));
         },
         handleAnnualSalaryChange(e){
-            const action={
-                type: 'HANDLE_ANNUAL_SALARY_CHANGE',
-                value:e.target.value,
-            }
             dispatch(actionCreators.handleAnnualSalaryChange(e));
         },
         handleSpuerRateChange(e){
-            const action={
-                type: 'HANDLE_SUPER_RATE_CHANGE',
-                value:e.target.value,
-            }
             dispatch(actionCreators.handleSpuerRateChange(e));
         },
         handleClick(FirstName, LastName, AnnualSalary, SuperRate){
@@ -145,19 +129,6 @@ const mapDispatch=(dispatch)=>{
             const NetIncome=GrossIncome-MonthIncomeTax;
             const SuperPay=Math.floor(GrossIncome*(SuperRate/100));
             const Pay=NetIncome-SuperPay;
-
-            const action={
-                type: 'GENERATE_PAYSLIP',
-                FirstName: FirstName,
-                LastName: LastName,
-                AnnualIncome:AnnualIncome,
-                GrossIncome:GrossIncome,
-                IncomeTax:MonthIncomeTax,
-                NetIncome:NetIncome,
-                SuperPay:SuperPay,
-                Pay:Pay
-            }
-//            alert(FirstName);
             dispatch(actionCreators.generatePayslip(FirstName, LastName, AnnualIncome, GrossIncome, MonthIncomeTax, NetIncome, SuperPay, Pay));
         }
     }
