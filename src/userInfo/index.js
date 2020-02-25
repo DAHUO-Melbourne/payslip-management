@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Col, InputGroup, FormControl, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
+import * as actionCreators from './store/actionCreators';
 
 class UserInfo extends Component {
     render(){
@@ -106,28 +107,28 @@ const mapDispatch=(dispatch)=>{
                 type: 'HANDLE_FIRST_NAME_CHANGE',
                 value:e.target.value,
             }
-            dispatch(action);
+            dispatch(actionCreators.handleFirstNameChange(e));
         },
         handleLastNameChange(e){
             const action={
                 type: 'HANDLE_LAST_NAME_CHANGE',
                 value:e.target.value,
             }
-            dispatch(action);
+            dispatch(actionCreators.handleLastNameChange(e));
         },
         handleAnnualSalaryChange(e){
             const action={
                 type: 'HANDLE_ANNUAL_SALARY_CHANGE',
                 value:e.target.value,
             }
-            dispatch(action);
+            dispatch(actionCreators.handleAnnualSalaryChange(e));
         },
         handleSpuerRateChange(e){
             const action={
                 type: 'HANDLE_SUPER_RATE_CHANGE',
                 value:e.target.value,
             }
-            dispatch(action);
+            dispatch(actionCreators.handleSpuerRateChange(e));
         },
         handleClick(FirstName, LastName, AnnualSalary, SuperRate){
             const AnnualIncome=parseInt(AnnualSalary);
@@ -156,7 +157,8 @@ const mapDispatch=(dispatch)=>{
                 SuperPay:SuperPay,
                 Pay:Pay
             }
-            dispatch(action);
+//            alert(FirstName);
+            dispatch(actionCreators.generatePayslip(FirstName, LastName, AnnualIncome, GrossIncome, MonthIncomeTax, NetIncome, SuperPay, Pay));
         }
     }
 }

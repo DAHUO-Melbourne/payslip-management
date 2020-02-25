@@ -1,5 +1,5 @@
-import {fromJS} from 'immutable';
 import * as constants from './constants';
+import {fromJS} from 'immutable';
 
 const defaultState=fromJS({
     FirstName:'',
@@ -14,7 +14,8 @@ const defaultState=fromJS({
 
 export default(state=defaultState, action)=>{
     switch(action.type){
-        case 'GENERATE_PAYSLIP':
+        case constants.GENERATE_PAYSLIP:
+//            alert(action.FirstName);
             return state.merge({
                 'FirstName':action.FirstName,
                 'LastName':action.LastName,

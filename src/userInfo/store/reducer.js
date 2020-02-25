@@ -10,13 +10,13 @@ const defaultState=fromJS({
 
 export default(state=defaultState, action)=>{
     switch(action.type){
-        case 'HANDLE_FIRST_NAME_CHANGE':
+        case constants.HANDLE_FIRST_NAME_CHANGE:
             return state.set('FirstName', action.value);
-        case 'HANDLE_LAST_NAME_CHANGE':
+        case constants.HANDLE_LAST_NAME_CHANGE:
             return state.set('LastName', action.value);
-        case 'HANDLE_ANNUAL_SALARY_CHANGE':
+        case constants.HANDLE_ANNUAL_SALARY_CHANGE:
             return state.set('AnnualSalary', action.value);
-        case 'HANDLE_SUPER_RATE_CHANGE':
+        case constants.HANDLE_SUPER_RATE_CHANGE:
             return state.set('SuperRate', action.value);
         default:
             return state;

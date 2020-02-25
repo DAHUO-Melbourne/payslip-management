@@ -1,0 +1,1 @@
+export const GENERATE_PAYSLIP = 'GENERATE_PAYSLIP';
